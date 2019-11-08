@@ -1,5 +1,7 @@
 class Item
 
+  attr_accessor :title, :deadline, :description
+
   def self.valid_date?(date_str)
         parts = date_str.split("-")
         return false if parts.length != 3
@@ -13,14 +15,13 @@ class Item
         true
     end
 
-  def initialize()
+  def initialize(title, deadline, description)
+    raise "INVALID DEADLINE" unless Item.valid_date?(deadline)
 
+    @title = title
+    @deadline = deadline
+    @description = description
   end
 
 end
 
-p Item.valid_date?('2019-10-25') # true
-p Item.valid_date?('1912-06-23') # true
-p Item.valid_date?('2018-13-20') # false
-p Item.valid_date?('2018-12-32') # false
-p Item.valid_date?('10-25-2019') # false
