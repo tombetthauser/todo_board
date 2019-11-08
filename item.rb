@@ -24,4 +24,3 @@ class Item
   end
 
 end
-
