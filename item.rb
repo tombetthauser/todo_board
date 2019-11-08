@@ -1,18 +1,17 @@
 class Item
 
-  def self.valid_date?(date)
-    strs_array = date.split("-")
-    return false if strs_array.length != 3
+  def self.valid_date?(date_str)
+        parts = date_str.split("-")
+        return false if parts.length != 3
+       
+        year, month, day = parts.map(&:to_i)
 
-    year = strs_array[0]
-    month = strs_array[1]
-    day = strs_array[2]
+        return false unless year > 999 && year < 10000
+        return false unless month > 0 && month < 13
+        return false unless day > 0 && day < 32
 
-    return false if year < 1000 || 
-
-    ints_array = date.split("-").map(&:to_i)
-    true
-  end
+        true
+    end
 
   def initialize()
 
